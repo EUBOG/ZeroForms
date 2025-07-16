@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Анкета пользователя</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submission {
+            margin-top: 30px;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Анкета пользователя</h1>
 
+    <form method="post">
+        <label>Имя:</label><br>
+        <input type="text" name="name"><br>
+
+        <label>Город:</label><br>
+        <input type="text" name="city"><br>
+
+        <label>Хобби:</label><br>
+        <input type="text" name="hobby"><br>
+
+        <label>Возраст:</label><br>
+        <input type="number" name="age"><br>
+
+        <input type="submit" value="Отправить">
+    </form>
+
+    {% for submission in submissions %}
+        <div class="submission">
+            <h3>Запись от {{ submission.timestamp }}</h3>
+            <p>
+                <strong>Имя:</strong> {{ submission.name }}
+                <strong>Город:</strong> {{ submission.city }}
+                <strong>Хобби:</strong> {{ submission.hobby }}
+                <strong>Возраст:</strong> {{ submission.age }}
+            </p>
+        </div>
+    {% endfor %}
+</body>
+</html>
